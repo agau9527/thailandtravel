@@ -123,7 +123,7 @@
     return `<footer>
       <div class="th">สวัสดี</div>
       泰國 11 天行程 · 曼谷 × 清邁 · 2027.02.03 – 02.13
-      <div class="credit">圖片來源：Wikimedia Commons（CC 授權）及各店家官網／旅遊部落格，詳見 <a href="CREDITS.md">CREDITS</a>。</div>
+      <div class="credit">圖片來源：Wikimedia Commons（CC 授權）及各店家官網／旅遊部落格，詳見 <a href="credits.html">出處與授權</a>。</div>
     </footer>`;
   }
 
