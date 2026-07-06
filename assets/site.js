@@ -1,7 +1,7 @@
 /* 泰國行程網站 — 依 body[data-page] / body[data-day] 渲染
    依賴 window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE }（來自 data.js）*/
 (function () {
-  const { IMG, HERO, DATA, FOOD, MASSAGE, STAY, GEO } = window.TAI;
+  const { IMG, HERO, DATA, FOOD, MASSAGE, STAY, GEO, INFO } = window.TAI;
   const ALL = [...DATA.bangkok, ...DATA.chiangmai]; // Day1..Day11 依序
   const CITY_NAME = { bangkok: "曼谷", chiangmai: "清邁" };
 
@@ -109,6 +109,7 @@
       ${tab("index.html#chiangmai", "清邁", "CHIANG MAI", "DAY 7 – 11", active === "chiangmai")}
       ${tab("food.html", "美食", "FOOD", "EAT LIST", active === "food")}
       ${tab("massage.html", "按摩", "SPA", "RELAX", active === "massage")}
+      ${tab("info.html", "資訊", "INFO", "TIPS", active === "info")}
     </div></nav>`;
   }
 
@@ -394,6 +395,33 @@
     dsum: "泰式古法、蘭納 SPA 到都會奢華療程——曼谷與清邁口碑最好的幾家，替走跳的雙腿好好充電。",
   });
 
+  // 行前資訊頁：實用資訊 + 必訂清單（＋常用泰語、打包清單）
+  function infoPageHTML() {
+    const practical = INFO.practical.map((x) =>
+      `<div class="info-card"><span class="ic">${x.ic}</span><div class="tx"><h4>${esc(x.t)}</h4><p>${esc(x.d)}</p></div></div>`
+    ).join("");
+    const checklist = INFO.checklist.map((c) =>
+      `<div class="chk"><div class="chk-when">${esc(c.when)}</div><ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`
+    ).join("");
+    return `<section class="wrap infopage">
+      <h3 class="info-h">🧳 行前實用資訊</h3>
+      <div class="info-grid">${practical}</div>
+      <h3 class="info-h">✅ 出發前必訂清單</h3>
+      <p class="info-lead">泰國熱門店家與活動常需提前預訂，這張清單照時間軸排好各階段該做什麼。</p>
+      <div class="chk-list">${checklist}</div>
+    </section>`;
+  }
+  function renderInfo() {
+    document.title = "行前資訊 · 泰國 11 天";
+    const hero = `<header class="hero day-hero" style="background-image:url('${firstImg("grand-palace")}')">
+      <div class="daynum-big">TRAVEL TIPS · 行前資訊</div>
+      <h1>行前準備</h1>
+      <div class="dsum">簽證、換匯、網路、交通、天氣穿著，到出發前的必訂清單——出門前掃一遍，玩得更安心。</div>
+    </header>`;
+    document.getElementById("app").innerHTML =
+      hero + cityBarHTML("info") + infoPageHTML() + footerHTML();
+  }
+
   /* ---------- 相簿互動 ---------- */
   function wireGalleries() {
     GALLERIES.forEach((g) => {
@@ -464,6 +492,7 @@
     if (b.dataset.day) renderDay(+b.dataset.day);
     else if (b.dataset.page === "food") renderFood();
     else if (b.dataset.page === "massage") renderMassage();
+    else if (b.dataset.page === "info") renderInfo();
     else renderHome();
     finalize();
   });

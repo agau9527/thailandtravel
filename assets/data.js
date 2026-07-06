@@ -731,5 +731,27 @@ const GEO = {
   "11-1": [18.790475, 98.978593],
 };
 
+// 行前實用資訊、必訂清單、常用泰語、打包清單（info.html）
+const INFO = {
+  practical: [
+    { ic: "🛂", t: "簽證", d: "台灣護照觀光免簽 30 天；護照效期需 6 個月以上，建議備妥回程機票與住宿資料備查。" },
+    { ic: "💱", t: "貨幣・換匯", d: "泰銖（THB，約 1 THB≈0.9 TWD）。帶部分現金，當地 Superrich／Vasu 匯率較佳；ATM 普及但每筆多收約 220 銖手續費。" },
+    { ic: "📶", t: "網路", d: "出發前買 eSIM，或落地在機場／超商買 SIM（AIS／True／dtac）；7 天吃到飽約 200–350 銖。" },
+    { ic: "🚇", t: "市內交通", d: "曼谷：BTS／MRT（Rabbit 卡或一日票）、機場快線用代幣、其餘靠 Grab。清邁：Grab 或雙條車（songthaew，招手上車、市區約 40 銖/人）。" },
+    { ic: "🌤️", t: "天氣・穿著", d: "2 月乾季。曼谷約 25–33°C，白天短袖；清邁早晚偏涼（約 15–30°C），帶件薄外套。參拜寺廟一律遮肩過膝。" },
+    { ic: "🔌", t: "電壓插座", d: "220V／50Hz，插座多為 Type A／B／C。台灣兩腳扁插多可直接用，建議帶萬用轉接與延長線。" },
+    { ic: "💰", t: "小費", d: "非強制。按摩 50–100 銖、餐廳找零湊整、飯店行李員 20–50 銖；多備 20／50 銖零鈔方便。" },
+    { ic: "🕐", t: "時差", d: "泰國比台灣慢 1 小時（GMT+7）。" },
+    { ic: "🆘", t: "緊急電話", d: "觀光警察 1155（有中／英文）、報警 191、救護車 1669。" },
+    { ic: "📱", t: "必備 App", d: "Grab（叫車）、Google Maps、QueQ（餐廳遠端抽號）、Bolt（另一叫車）、各銀行換匯查詢。" },
+  ],
+  checklist: [
+    { when: "出發前 3–4 週", items: ["鄭王廟泰服寫真攝影師套餐（最搶手，先訂）", "機票、住宿確認", "辦好 eSIM／網路方案"] },
+    { when: "出發前 1–2 週", items: ["Divana 等高級 SPA 預約", "Mahanakhon 觀景台線上購票（比現場便宜）", "KLOOK／KKday 想用的票券、接送"] },
+    { when: "出發前幾天", items: ["Somboon、Laem Charoen 海鮮訂位", "Dash Teak House 訂位", "Fah Lanna／Oasis／Makkha 按摩預約（可順便約免費接送）"] },
+    { when: "當天現場", items: ["Jeh O、Tong Tem Toh 用 QueQ App 遠端抽號", "Go-Ang 粉紅雞飯、Khao Soi 名店、Cherng Doi 烤雞：現場排隊、趁早去、賣完就收"] },
+  ],
+};
+
 // 供各頁使用
-window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE, STAY, GEO };
+window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE, STAY, GEO, INFO };

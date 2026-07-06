@@ -260,6 +260,24 @@ a{color:inherit}
 .pager a.home .t{color:var(--cream)}
 .pager .empty{visibility:hidden}
 
+/* ===== 行前資訊頁 ===== */
+.infopage{padding:34px 0 8px}
+.info-h{font-size:1.35rem;color:var(--teak);font-weight:900;letter-spacing:.03em;margin:36px 0 6px;display:flex;align-items:center;gap:10px}
+.info-h:first-child{margin-top:20px}
+.info-lead{color:var(--teak-soft);font-size:.95rem;margin:0 0 16px;max-width:820px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:16px 0 8px}
+.info-card{display:flex;gap:14px;background:var(--paper);border:1px solid #e6d9bd;border-radius:8px;padding:16px 18px;box-shadow:0 3px 14px rgba(58,36,23,.06)}
+.info-card .ic{font-size:1.6rem;line-height:1.2;flex:0 0 auto}
+.info-card h4{font-size:1.02rem;color:var(--teak);font-weight:800;margin-bottom:5px}
+.info-card p{font-family:"Noto Sans TC",sans-serif;font-size:.86rem;color:var(--teak-soft);line-height:1.65}
+.chk-list{border-left:3px solid var(--gold);margin:16px 0 8px;padding-left:24px;display:flex;flex-direction:column;gap:22px}
+.chk{position:relative}
+.chk::before{content:"";position:absolute;left:-32px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--vermilion);border:3px solid var(--cream)}
+.chk-when{font-family:"Noto Sans TC",sans-serif;font-weight:800;color:var(--vermilion);font-size:.95rem;letter-spacing:.04em;margin-bottom:8px}
+.chk ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.chk li{font-family:"Noto Sans TC",sans-serif;font-size:.9rem;color:var(--teak);padding-left:22px;position:relative;line-height:1.6}
+.chk li::before{content:"☐";position:absolute;left:0;color:var(--muted)}
+
 /* ===== FOOTER ===== */
 footer{background:var(--ink);color:var(--cream-deep);text-align:center;padding:34px 20px;
   font-family:"Noto Sans TC",sans-serif;font-size:.82rem;letter-spacing:.06em;}
