@@ -1,7 +1,7 @@
 /* 泰國行程網站 — 依 body[data-page] / body[data-day] 渲染
    依賴 window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE }（來自 data.js）*/
 (function () {
-  const { IMG, HERO, DATA, FOOD, MASSAGE, STAY } = window.TAI;
+  const { IMG, HERO, DATA, FOOD, MASSAGE, STAY, GEO } = window.TAI;
   const ALL = [...DATA.bangkok, ...DATA.chiangmai]; // Day1..Day11 依序
   const CITY_NAME = { bangkok: "曼谷", chiangmai: "清邁" };
 
@@ -136,6 +136,50 @@
     <div class="lb-cap" id="lb-cap"></div>
   </div>`;
 
+  /* ---------- 每日路線地圖（Leaflet + OpenStreetMap，免金鑰） ---------- */
+  function dayGeoPoints(day) {
+    return day.spots
+      .map((s, i) => { const g = GEO[day.n + "-" + i]; return g ? { lat: g[0], lng: g[1], name: s.name } : null; })
+      .filter(Boolean);
+  }
+  let leafletLoading;
+  function loadLeaflet() {
+    if (window.L) return Promise.resolve();
+    if (leafletLoading) return leafletLoading;
+    leafletLoading = new Promise((resolve) => {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+      document.head.appendChild(css);
+      const js = document.createElement("script");
+      js.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+      js.onload = resolve;
+      document.head.appendChild(js);
+    });
+    return leafletLoading;
+  }
+  function initDayMap(day) {
+    const pts = dayGeoPoints(day);
+    if (!pts.length) return;
+    loadLeaflet().then(() => {
+      const el = document.getElementById("daymap");
+      if (!el || el._leaflet_id) return;
+      const map = L.map(el, { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19, attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
+      const latlngs = pts.map((p) => [p.lat, p.lng]);
+      if (latlngs.length > 1) {
+        L.polyline(latlngs, { color: "#b5341f", weight: 3, opacity: 0.7, dashArray: "6 6" }).addTo(map);
+      }
+      pts.forEach((p, i) => {
+        const icon = L.divIcon({ className: "daypin", html: `<span>${i + 1}</span>`, iconSize: [28, 28], iconAnchor: [14, 14] });
+        L.marker([p.lat, p.lng], { icon }).addTo(map).bindPopup(`${i + 1}. ${esc(p.name)}`);
+      });
+      map.fitBounds(latlngs, { padding: [40, 40], maxZoom: 16 });
+    });
+  }
+
   /* ---------- 頁面組裝 ---------- */
 
   function renderDay(n) {
@@ -155,7 +199,10 @@
 
     const flight = day.flight ? flightHTML(day.flight) : "";
     const spots = day.spots.map(spotCard).join("");
-    const body = `<section class="wrap"><div class="day">${flight}${spots}</div></section>`;
+    const mapSec = dayGeoPoints(day).length
+      ? `<section class="wrap"><div class="daymap-block"><h5 class="daymap-h">🗺️ 當日路線</h5><div id="daymap"></div><p class="daymap-note">數字為當日順序，點圖釘看地點名稱、可縮放查看周邊；座標為概略位置。</p></div></section>`
+      : "";
+    const body = `${mapSec}<section class="wrap"><div class="day">${flight}${spots}</div></section>`;
 
     const pcard = (d, cls, k) =>
       d
@@ -169,6 +216,7 @@
 
     document.getElementById("app").innerHTML =
       hero + cityBarHTML(day.city) + dayNavHTML(n) + body + pager + footerHTML();
+    initDayMap(day);
   }
 
   function daycardHTML(d) {

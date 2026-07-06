@@ -171,6 +171,19 @@ a{color:inherit}
 .spot-links a.map{border-color:var(--jade);color:var(--jade)}
 .spot-links a.map:hover{background:var(--jade);color:#fff;border-color:var(--jade)}
 
+/* ===== 每日路線地圖 ===== */
+.daymap-block{padding:26px 0 4px}
+.daymap-h{font-family:"Noto Sans TC",sans-serif;font-size:1rem;color:var(--teak);font-weight:800;
+  letter-spacing:.08em;margin:0 0 12px}
+#daymap{height:360px;border-radius:8px;border:1px solid #e6d9bd;position:relative;z-index:0;
+  box-shadow:0 3px 14px rgba(58,36,23,.08);background:var(--cream-deep)}
+.daymap-note{font-family:"Noto Sans TC",sans-serif;font-size:.76rem;color:var(--muted);margin-top:8px}
+.daypin{background:none;border:none}
+.daypin span{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;
+  background:var(--vermilion);color:#fff;font-family:"Noto Sans TC",sans-serif;font-weight:800;font-size:.85rem;
+  border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+@media(max-width:680px){#daymap{height:300px}}
+
 /* ===== FLIGHT strip ===== */
 .flight{display:flex;align-items:center;gap:18px;
   background:linear-gradient(100deg,var(--vermilion),var(--gold));color:var(--cream);
