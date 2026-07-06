@@ -282,6 +282,12 @@ a{color:inherit}
 .phrase .th{font-family:"Noto Serif TC",serif;font-size:1.18rem;color:var(--vermilion);font-weight:700;line-height:1.4}
 .phrase .rm{font-family:"Noto Sans TC",sans-serif;font-size:.8rem;color:var(--muted);margin:3px 0 6px}
 .phrase .zh{font-family:"Noto Sans TC",sans-serif;font-size:.92rem;color:var(--teak);font-weight:600}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:16px 0 8px}
+.pack-cat{background:var(--paper);border:1px solid #e6d9bd;border-radius:8px;padding:16px 18px;box-shadow:0 3px 14px rgba(58,36,23,.06)}
+.pack-cat h4{font-size:1rem;color:var(--teak);font-weight:800;margin-bottom:10px}
+.pack-cat ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.pack-cat li{font-family:"Noto Sans TC",sans-serif;font-size:.86rem;color:var(--teak-soft);padding-left:22px;position:relative;line-height:1.55}
+.pack-cat li::before{content:"☐";position:absolute;left:0;color:var(--muted)}
 
 /* ===== FOOTER ===== */
 footer{background:var(--ink);color:var(--cream-deep);text-align:center;padding:34px 20px;

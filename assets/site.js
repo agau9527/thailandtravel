@@ -406,6 +406,9 @@
     const phrases = (INFO.phrases || []).map((p) =>
       `<div class="phrase"><div class="th">${esc(p.th)}</div><div class="rm">${esc(p.rm)}</div><div class="zh">${esc(p.zh)}</div></div>`
     ).join("");
+    const packing = (INFO.packing || []).map((g) =>
+      `<div class="pack-cat"><h4>${esc(g.cat)}</h4><ul>${g.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`
+    ).join("");
     return `<section class="wrap infopage">
       <h3 class="info-h">🧳 行前實用資訊</h3>
       <div class="info-grid">${practical}</div>
@@ -415,6 +418,9 @@
       <h3 class="info-h">🗣️ 常用泰語小卡</h3>
       <p class="info-lead">點餐、殺價、問路都用得上；句末加 ค่ะ(kâ，女)／ครับ(kráp，男) 最有禮貌。</p>
       <div class="phrase-grid">${phrases}</div>
+      <h3 class="info-h">🎒 打包清單（2 月泰國）</h3>
+      <p class="info-lead">乾季偏乾熱——曼谷白天熱、清邁早晚涼，寺廟需遮肩過膝。照類別打勾帶齊。</p>
+      <div class="pack-grid">${packing}</div>
     </section>`;
   }
   function renderInfo() {
