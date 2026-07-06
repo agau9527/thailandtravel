@@ -1,7 +1,7 @@
 /* 泰國行程網站 — 依 body[data-page] / body[data-day] 渲染
    依賴 window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE }（來自 data.js）*/
 (function () {
-  const { IMG, HERO, DATA, FOOD, MASSAGE } = window.TAI;
+  const { IMG, HERO, DATA, FOOD, MASSAGE, STAY } = window.TAI;
   const ALL = [...DATA.bangkok, ...DATA.chiangmai]; // Day1..Day11 依序
   const CITY_NAME = { bangkok: "曼谷", chiangmai: "清邁" };
 
@@ -31,6 +31,7 @@
     price:    { ic: "💵", lab: "費用" },
     duration: { ic: "⏳", lab: "建議停留" },
     access:   { ic: "🚇", lab: "交通" },
+    checkin:  { ic: "🛎️", lab: "入住／退房" },
     booking:  { ic: "📅", lab: "預約" },
   };
 
@@ -187,12 +188,25 @@
     </a>`;
   }
 
-  function cityIntro(city, thai, text, stay) {
+  // 住宿卡：重用 spotCard（相簿＋燈箱＋資訊格）
+  function stayCardHTML(s) {
+    return spotCard({
+      img: s.img, tag: s.tag, tagc: "tag-time",
+      name: s.n, en: s.en, desc: s.desc,
+      info: s.info, tip: s.tip,
+      map: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.map || s.n)}`,
+      links: s.links,
+    });
+  }
+  function cityIntro(city, thai, text) {
+    const stay = STAY[city]
+      ? `<div class="stay-block"><h5 class="stay-h">🏨 住宿</h5>${stayCardHTML(STAY[city])}</div>`
+      : "";
     return `<section class="wrap" id="${city}"><div class="intro">
       <h2><span>${CITY_NAME[city]}</span><span class="thaichar">${thai}</span></h2>
       <p>${text}</p>
-      <div class="stay"><span class="k">住宿</span> ${stay}</div>
     </div>
+    ${stay}
     <div class="daygrid">${DATA[city].map(daycardHTML).join("")}</div>
     </section>`;
   }
@@ -283,13 +297,11 @@
 
     const bangkok = cityIntro(
       "bangkok", "กรุงเทพ",
-      "天使之城，泰國的心跳。你的曼谷六天圍繞著三件事轉：暹羅商圈的無盡逛街、招牌咖哩螃蟹的鮮甜，以及鄭王廟前那一襲泰服寫真。住在暹羅正中心，逛累了隨時回房，一切都在 BTS 的路線內。",
-      "Holiday Inn Express Bangkok Siam · 暹羅 BTS 旁"
+      "天使之城，泰國的心跳。你的曼谷六天圍繞著三件事轉：暹羅商圈的無盡逛街、招牌咖哩螃蟹的鮮甜，以及鄭王廟前那一襲泰服寫真。住在暹羅正中心，逛累了隨時回房，一切都在 BTS 的路線內。"
     );
     const chiangmai = cityIntro(
       "chiangmai", "เชียงใหม่",
-      "泰北的玫瑰，蘭納王朝的舊都。步調在這裡慢下來——古城的方格裡塞滿百年寺廟、週末夜市與手沖咖啡。你住在柴迪隆寺對面的 Kiri 基里飯店，推開門就是古城的靈魂；尼曼的文青咖啡與素帖山的夕陽，則濃縮在完整的一天裡。",
-      "Kiri Chiang Mai 基里飯店 · 古城 · 柴迪隆寺對面"
+      "泰北的玫瑰，蘭納王朝的舊都。步調在這裡慢下來——古城的方格裡塞滿百年寺廟、週末夜市與手沖咖啡。你住在柴迪隆寺對面的 Kiri 基里飯店，推開門就是古城的靈魂；尼曼的文青咖啡與素帖山的夕陽，則濃縮在完整的一天裡。"
     );
 
     document.getElementById("app").innerHTML =

@@ -59,6 +59,9 @@ const IMG = {
   "massage-fahlanna":  ["images/massage-fahlanna-1.jpg","images/massage-fahlanna-2.jpg"],
   "massage-oasis":     ["images/massage-oasis-1.jpg","images/massage-oasis-2.jpg"],
   "massage-makkha":    ["images/massage-makkha-1.jpg"],
+  // 住宿
+  "stay-bkk":          ["images/stay-bkk-1.jpg","images/stay-bkk-2.jpg"],
+  "stay-cm":           ["images/stay-cm-1.jpg","images/stay-cm-2.jpg"],
 };
 
 // 每個城市 / 天的主視覺（英雄圖）
@@ -666,5 +669,25 @@ const MASSAGE = [
   ]},
 ];
 
+// 住宿：每城一家，比照卡片呈現（圖 + 實用資訊 + 地圖）
+const STAY = {
+  bangkok: {
+    n: "Holiday Inn Express Bangkok Siam", en: "IHG · 暹羅商圈", img: "stay-bkk", tag: "曼谷 · 6 晚",
+    desc: "曼谷六晚的家。位在暹羅商圈、BTS National Stadium 站旁的現代設計飯店，樓下就是 MBK 與暹羅百貨群，鄭王廟、大皇宮搭船或 BTS 都好到。300 間客房走簡約明亮風，含自助早餐與免費 WiFi，高樓層還能俯瞰城市與國家體育場。",
+    info: { access: "BTS National Stadium 站步行約 3 分", price: "雙人房約 2500–3500 銖/晚（含早餐）", checkin: "入住 14:00／退房 12:00", booking: "IHG 官網或訂房平台" },
+    tip: "選高樓層景觀房視野好；暹羅一帶生活機能極佳，逛街、美食、按摩都在步行圈內。",
+    map: "Holiday Inn Express Bangkok Siam",
+    links: [{ label: "IHG 官網", url: "https://www.ihg.com/holidayinnexpress/hotels/us/en/bangkok/bkkrb/hoteldetail" }],
+  },
+  chiangmai: {
+    n: "Kiri Hotel Chiang Mai", en: "基里 · 古城精品旅店", img: "stay-cm", tag: "清邁 · 4 晚",
+    desc: "清邁四晚的家。古城裡 23 間房的精品旅店，黑白灰現代設計揉合蘭納細節，距柴迪隆寺僅約 250 公尺、夜市約 1 公里。頂樓酒廊越過古塔遠眺素帖山，還有露天泳池與義法小酒館 Somm，鬧中取靜、推開門就是古城的靈魂。",
+    info: { access: "柴迪隆寺對面步行約 3 分 / 古城中心", price: "雙人房約 2800–4000 銖/晚", checkin: "入住 14:00／退房 12:00", booking: "官網或訂房平台" },
+    tip: "頂樓酒廊看日落與素帖山最美；古城多為步行範圍，租機車或叫 Grab 都方便。",
+    map: "Kiri Hotel Chiang Mai",
+    links: [{ label: "官網", url: "https://kiri-hotel.com/" }],
+  },
+};
+
 // 供各頁使用
-window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE };
+window.TAI = { IMG, HERO, DATA, FOOD, MASSAGE, STAY };

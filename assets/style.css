@@ -93,6 +93,10 @@ a{color:inherit}
   font-family:"Noto Sans TC",sans-serif;font-size:.9rem;color:var(--teak);
   box-shadow:0 2px 10px rgba(58,36,23,.06);}
 .intro .stay .k{color:var(--muted);font-size:.78rem;letter-spacing:.1em}
+/* 住宿卡標題 */
+.stay-block{padding:6px 0 2px}
+.stay-h{font-family:"Noto Sans TC",sans-serif;font-size:1rem;color:var(--teak);font-weight:800;
+  letter-spacing:.08em;margin:20px 0 12px}
 
 /* ===== DAY block ===== */
 .day{padding:34px 0}
