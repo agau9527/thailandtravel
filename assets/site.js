@@ -199,11 +199,13 @@
     </header>`;
 
     const flight = day.flight ? flightHTML(day.flight) : "";
-    const spots = day.spots.map(spotCard).join("");
+    const spots = day.spots.map((s) =>
+      `<div class="tl-item"><div class="tl-rail"><span class="tl-node ${esc(s.tagc)}"></span><span class="tl-time">${esc(s.tag)}</span></div>${spotCard(s)}</div>`
+    ).join("");
     const mapSec = dayGeoPoints(day).length
       ? `<section class="wrap"><div class="daymap-block"><h5 class="daymap-h">🗺️ 當日路線</h5><div id="daymap"></div><p class="daymap-note">數字為當日順序，點圖釘看地點名稱、可縮放查看周邊；座標為概略位置。</p></div></section>`
       : "";
-    const body = `${mapSec}<section class="wrap"><div class="day">${flight}${spots}</div></section>`;
+    const body = `${mapSec}<section class="wrap"><div class="day">${flight}<div class="timeline">${spots}</div></div></section>`;
 
     const pcard = (d, cls, k) =>
       d

@@ -107,6 +107,27 @@ a{color:inherit}
 .day-date{font-family:"Noto Sans TC",sans-serif;font-size:.82rem;color:var(--muted);letter-spacing:.05em}
 .day-sum{color:var(--teak-soft);margin:4px 0 26px;font-size:1rem;max-width:820px}
 
+/* ===== 每日時間軸 ===== */
+.timeline{position:relative}
+.timeline::before{content:"";position:absolute;left:38px;top:18px;bottom:18px;width:2px;background:#e0cfa8}
+.tl-item{display:grid;grid-template-columns:76px 1fr;align-items:start}
+.tl-rail{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:16px}
+.tl-node{width:16px;height:16px;border-radius:50%;background:var(--teak-soft);border:3px solid var(--cream);
+  box-shadow:0 0 0 1px #e0cfa8;position:relative;z-index:1}
+.tl-node.tag-eat{background:var(--vermilion)}
+.tl-node.tag-cafe{background:var(--jade)}
+.tl-node.tag-spa{background:rgba(90,120,120,.95)}
+.tl-node.tag-star{background:var(--gold)}
+.tl-node.tag-time{background:var(--teak-soft)}
+.tl-time{font-family:"Noto Sans TC",sans-serif;font-size:.7rem;color:var(--muted);text-align:center;
+  margin-top:8px;line-height:1.35;max-width:72px}
+.tl-item .spot-tag{display:none}
+@media(max-width:680px){
+  .tl-item{grid-template-columns:44px 1fr}
+  .timeline::before{left:22px}
+  .tl-time{font-size:.6rem;max-width:40px}
+}
+
 /* ===== SPOT card ===== */
 .spot{display:grid;grid-template-columns:340px 1fr;gap:0;background:var(--paper);
   border:1px solid #e6d9bd;border-radius:6px;overflow:hidden;margin-bottom:24px;
