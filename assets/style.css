@@ -277,6 +277,11 @@ a{color:inherit}
 .chk ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 .chk li{font-family:"Noto Sans TC",sans-serif;font-size:.9rem;color:var(--teak);padding-left:22px;position:relative;line-height:1.6}
 .chk li::before{content:"☐";position:absolute;left:0;color:var(--muted)}
+.phrase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0 8px}
+.phrase{background:var(--paper);border:1px solid #e6d9bd;border-radius:8px;padding:14px 16px;box-shadow:0 3px 14px rgba(58,36,23,.06)}
+.phrase .th{font-family:"Noto Serif TC",serif;font-size:1.18rem;color:var(--vermilion);font-weight:700;line-height:1.4}
+.phrase .rm{font-family:"Noto Sans TC",sans-serif;font-size:.8rem;color:var(--muted);margin:3px 0 6px}
+.phrase .zh{font-family:"Noto Sans TC",sans-serif;font-size:.92rem;color:var(--teak);font-weight:600}
 
 /* ===== FOOTER ===== */
 footer{background:var(--ink);color:var(--cream-deep);text-align:center;padding:34px 20px;

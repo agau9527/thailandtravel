@@ -403,12 +403,18 @@
     const checklist = INFO.checklist.map((c) =>
       `<div class="chk"><div class="chk-when">${esc(c.when)}</div><ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`
     ).join("");
+    const phrases = (INFO.phrases || []).map((p) =>
+      `<div class="phrase"><div class="th">${esc(p.th)}</div><div class="rm">${esc(p.rm)}</div><div class="zh">${esc(p.zh)}</div></div>`
+    ).join("");
     return `<section class="wrap infopage">
       <h3 class="info-h">🧳 行前實用資訊</h3>
       <div class="info-grid">${practical}</div>
       <h3 class="info-h">✅ 出發前必訂清單</h3>
       <p class="info-lead">泰國熱門店家與活動常需提前預訂，這張清單照時間軸排好各階段該做什麼。</p>
       <div class="chk-list">${checklist}</div>
+      <h3 class="info-h">🗣️ 常用泰語小卡</h3>
+      <p class="info-lead">點餐、殺價、問路都用得上；句末加 ค่ะ(kâ，女)／ครับ(kráp，男) 最有禮貌。</p>
+      <div class="phrase-grid">${phrases}</div>
     </section>`;
   }
   function renderInfo() {

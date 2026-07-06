@@ -751,6 +751,20 @@ const INFO = {
     { when: "出發前幾天", items: ["Somboon、Laem Charoen 海鮮訂位", "Dash Teak House 訂位", "Fah Lanna／Oasis／Makkha 按摩預約（可順便約免費接送）"] },
     { when: "當天現場", items: ["Jeh O、Tong Tem Toh 用 QueQ App 遠端抽號", "Go-Ang 粉紅雞飯、Khao Soi 名店、Cherng Doi 烤雞：現場排隊、趁早去、賣完就收"] },
   ],
+  phrases: [
+    { th: "สวัสดี ค่ะ／ครับ", rm: "sà-wàt-dii kâ／kráp", zh: "你好（女生說 kâ、男生說 kráp）" },
+    { th: "ขอบคุณ", rm: "khàwp-khun", zh: "謝謝" },
+    { th: "เท่าไหร่", rm: "thâo-rài", zh: "多少錢？" },
+    { th: "ไม่เผ็ด", rm: "mâi phèt", zh: "不要辣" },
+    { th: "เผ็ดนิดหน่อย", rm: "phèt nít nàuy", zh: "一點點辣就好" },
+    { th: "อร่อย", rm: "à-ròi", zh: "好吃！" },
+    { th: "ลดหน่อยได้ไหม", rm: "lót nàuy dâi mái", zh: "可以算便宜一點嗎？" },
+    { th: "ห้องน้ำอยู่ไหน", rm: "hông-náam yùu nǎi", zh: "廁所在哪裡？" },
+    { th: "ไม่เอาถุง", rm: "mâi ao thǔng", zh: "不用袋子（環保）" },
+    { th: "เช็คบิล", rm: "chék bin", zh: "買單／結帳" },
+    { th: "ไม่เป็นไร", rm: "mâi pen rai", zh: "沒關係／不客氣" },
+    { th: "ช่วยด้วย", rm: "chûai dûai", zh: "救命！" },
+  ],
 };
 
 // 供各頁使用
